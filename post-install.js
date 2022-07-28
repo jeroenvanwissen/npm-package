@@ -10,10 +10,12 @@
 
  var gentlyCopy = require('gently-copy')
  
- var filesToCopy = ['build/compile1.js', 'build/compile2.js', 'build/compile3.js']
+ var filesToCopy = ['build/compiled1.js', 'build/compiled2.js', 'build/compiled3.js']
  
  // User's local directory
  var userPath = process.env.INIT_CWD
  
+ console.log(userPath);
+
  // Moving files to user's local directory
  gentlyCopy(filesToCopy, `${userPath}/src/`)
