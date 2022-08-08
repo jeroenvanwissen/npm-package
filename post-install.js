@@ -27,7 +27,8 @@ copyFiles(
     ]
 )
 .then(() => {
-    console.log('Files copied to project...');
+    console.info('sds');
+    console.error('Files copied to project...');
 })
 .catch((error) => {
     console.error(error);
