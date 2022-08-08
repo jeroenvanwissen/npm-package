@@ -9,7 +9,7 @@ const util = require('util');
 const fs   = require('fs');
 const path = require('path');
 
-const copyFilePromise = util.promisify(fs.copFile);
+const copyFilePromise = util.promisify(fs.copyFile);
 
 const copyFiles = (srcDir, destDir, files) => {
     return Promise.all(files.map((file) => {
