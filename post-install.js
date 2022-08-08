@@ -5,17 +5,30 @@
  *
  * Copy selected files to user's directory
  */
+const util = require('util');
+const fs   = require('fs');
+const path = require('path');
 
- 'use strict'
+const copyFilePromise = util.promisify(fs.copFile);
 
- var gentlyCopy = require('gently-copy')
- 
- var filesToCopy = ['build/compiled1.js', 'build/compiled2.js', 'build/compiled3.js']
- 
- // User's local directory
- var userPath = process.env.INIT_CWD
- 
- console.log(userPath);
+const copyFiles = (srcDir, destDir, files) {
+    return Promise.all(files.map((file) => {
+        return copyFilePromise(path.join(srcDir, file), path.join(destDir, file));
+    }));
+};
 
- // Moving files to user's local directory
- gentlyCopy(filesToCopy, `${userPath}/src/`)
+copyFiles(
+    'build',
+    `${process.env.INIT_CWD}/src/`,
+    [
+        'compiled1.js',
+        'compiled2.js',
+        'compiled3.js'
+    ]
+)
+.then(() => {
+    console.log('Files copied to project...');
+})
+.catch((error) => {
+    console.error(error);
+});
