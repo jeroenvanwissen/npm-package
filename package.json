@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/jeroenvanwissen/npm-package/issues"
   },
-  "homepage": "https://github.com/jeroenvanwissen/npm-package#readme",
-  "dependencies": {
-    "gently-copy": "^3.2.0"
-  }
+  "homepage": "https://github.com/jeroenvanwissen/npm-package#readme"
 }
