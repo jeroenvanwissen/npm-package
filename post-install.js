@@ -11,7 +11,7 @@ const path = require('path');
 
 const copyFilePromise = util.promisify(fs.copFile);
 
-const copyFiles = (srcDir, destDir, files) {
+const copyFiles = (srcDir, destDir, files) => {
     return Promise.all(files.map((file) => {
         return copyFilePromise(path.join(srcDir, file), path.join(destDir, file));
     }));
