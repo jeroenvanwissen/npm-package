@@ -5,15 +5,15 @@
  *
  * Copy selected files to user's directory
  */
-const util = require('util');
-const fs   = require('fs');
-const path = require('path');
+import { promisify } from 'util';
+import { copyFile } from 'fs';
+import { join } from 'path';
 
-const copyFilePromise = util.promisify(fs.copyFile);
+const copyFilePromise = promisify(copyFile);
 
 const copyFiles = (srcDir, destDir, files) => {
     return Promise.all(files.map((file) => {
-        return copyFilePromise(path.join(srcDir, file), path.join(destDir, file));
+        return copyFilePromise(join(srcDir, file), join(destDir, file));
     }));
 };
 
